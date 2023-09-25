@@ -7,7 +7,7 @@ export class MovieService {
     this.instance = axios.create({
       baseURL: process.env.NEXT_PUBLIC_API_URL,
       headers: {
-        'X-RapidAPI-Key': '8f6e6e389fmsh4c6f51b67c2627cp17601ajsn7191aad9e112',
+        'X-RapidAPI-Key': process.env.NEXT_PUBLIC_API_KEY,
         'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
       },
       timeout: 5000, 
