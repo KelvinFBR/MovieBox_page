@@ -3,13 +3,14 @@
 import { setTitleType } from "@/store/slices/filterSlice";
 import { useDispatch } from "react-redux";
 import { CategoryDropDownProps } from "../model/interfaces";
+import { Loader } from "@/components";
 
 export const CategoryDropDown = ({ isloading, titleTypes }: CategoryDropDownProps) => {
   const dispatch = useDispatch()
 
   if (isloading) {
     <ul className="w-full max-h-40 scroolbar absolute left-0 top-12 z-10 flex flex-col gap-2  border border-gray_900 rounded-md overflow-hidden bg-primary_white scroll-smooth overflow-y-scroll overflow-x-hidden">
-      <p>Loading...</p>
+      <Loader />
     </ul>
   }
 

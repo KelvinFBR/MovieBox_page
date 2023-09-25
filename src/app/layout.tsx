@@ -19,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="static/favicon.png" type="image/png" sizes="32x32" />
+      </head>
       <body className={inter.className}>
         <Providers >
           <Header />
