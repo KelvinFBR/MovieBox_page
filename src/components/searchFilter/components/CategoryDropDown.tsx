@@ -2,11 +2,7 @@
 
 import { setTitleType } from "@/store/slices/filterSlice";
 import { useDispatch } from "react-redux";
-
-interface CategoryDropDownProps {
-  isloading: boolean;
-  titleTypes: string[];
-}
+import { CategoryDropDownProps } from "../model/interfaces";
 
 export const CategoryDropDown = ({ isloading, titleTypes }: CategoryDropDownProps) => {
   const dispatch = useDispatch()

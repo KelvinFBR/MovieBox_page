@@ -2,17 +2,9 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { FilterState, SortType } from '../model/interfaces'
 
 
-type SortType = 'ascendente' | 'descendente'
-
-interface FilterState {
-  search: string,
-  sort: SortType | 'ordenar',
-  year?: number | string,
-  titleType: string
-  titleTypes: string[]
-}
 
 const initialState: FilterState = {
   search: '',
@@ -29,6 +21,9 @@ export const filterSlice = createSlice({
     setSort: (state, action: PayloadAction<SortType>) => {
       state.sort = action.payload
     },
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.search = action.payload
+    },
     setYear: (state, action: PayloadAction<number | string>) => {
       state.year = action.payload
     },
@@ -44,6 +39,6 @@ export const filterSlice = createSlice({
   },
 })
 
-export const { setSort, setTitleType, setYear, reset, setTitleTypes } = filterSlice.actions
+export const { setSort, setTitleType, setYear, reset, setTitleTypes, setSearchValue } = filterSlice.actions
 
 export default filterSlice.reducer

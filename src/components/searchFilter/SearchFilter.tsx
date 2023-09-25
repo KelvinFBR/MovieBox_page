@@ -7,13 +7,13 @@ import { SortDropDown } from "./components/SortDropDown"
 import { CategoryDropDown } from "./components/CategoryDropDown"
 import { MovieService } from '@/services';
 import { RootState } from '@/store';
-import { reset, setTitleTypes, } from '@/store/slices/filterSlice';
+import { reset, setSearchValue, setTitleTypes, } from '@/store/slices/filterSlice';
 import { IArrow, IArrowSort, ICategory, ISearch } from ".."
 import { useRouter } from 'next/navigation'
+import { TypeDropDown } from './model/interfaces';
 
 const movieService = new MovieService();
 
-type TypeDropDown = "category" | "year" | "Sort"
 
 const SearchFilter = () => {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -23,14 +23,14 @@ const SearchFilter = () => {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false)
   const [isloadingCategory, setIsloadingCategory] = useState<boolean>(true);
-  const { year, sort, titleType, titleTypes } = useSelector((state: RootState) => state.filter);
+  const { year, sort, titleType, titleTypes, search } = useSelector((state: RootState) => state.filter);
 
   const haddleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!searchRef.current?.value) return
     const typeSortValid = sort !== 'ordenar'
       ? sort === 'ascendente' ? 'incr' : 'decr'
-      : 'incr';
+      : 'decr';
     const yearValid = year !== 'Año' ? year : ''
     const titleTypeValid = titleType !== 'Titulo' ? titleType : ''
 
@@ -56,6 +56,11 @@ const SearchFilter = () => {
     }
   }
 
+  const haddleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    dispatch(setSearchValue(value))
+  }
+
   useEffect(() => {
     async function fetchTitleTypes() {
       if (titleTypes.length > 1) return
@@ -78,13 +83,15 @@ const SearchFilter = () => {
         <form className="w-full mb-8 relative" onSubmit={(e) => haddleSubmit(e)}>
           <input
             ref={searchRef}
+            onChange={(e) => haddleChange(e)}
             name='search'
+            value={search}
             type="text"
             placeholder="What do you want to watch?"
             className="placeholder-gray_900 border border-gray_800 w-full py-3 px-2 rounded-md outline-none" />
-          <div className="absolute top-0 right-3 h-full flex items-center justify-end cursor-pointer">
+          <button type='submit' className="absolute top-0 right-3 h-full flex items-center justify-end cursor-pointer">
             <ISearch />
-          </div>
+          </button>
         </form>
 
         <section className="flex flex-wrap justify-between gap-y-4">

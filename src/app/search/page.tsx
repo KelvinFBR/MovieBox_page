@@ -47,10 +47,10 @@ const SearchPage = () => {
   }, [dispatch, search, params]);
 
   return (
-    <>
+    <main>
       <SearchFilter />
       <TitlesContainer />
-    </>
+    </main>
   )
 }
 

@@ -2,9 +2,7 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { Titles, TitlesState } from '../model/interfaces'
-
-type SortType = 'ascendente' | 'descendente'
+import { TitlesState } from '../model/interfaces'
 
 const initialState: TitlesState = {
   isLoadingTitles: true,

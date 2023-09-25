@@ -9,10 +9,6 @@ import { INextPage, INextPageDisable, IPrevPage, IPrevPageDisable } from "..";
 
 const movieService = new MovieService();
 
-
-export type ButtonPaginationProps = { page: number, totalPages: number, setShowPage: (newPage: number) => void }
-
-
 const Pagination = () => {
   const { page: currentPage, next: nextPage, currentPageUrl } = useSelector((state: RootState) => state.titles);
   const dispatch = useDispatch()

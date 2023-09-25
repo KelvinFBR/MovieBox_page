@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux"
 export const SortDropDown = () => {
   const dispatch = useDispatch()
 
-
   return (
     <ul className="w-full max-h-40 scroolbar absolute left-0 top-12 z-10 flex flex-col gap-2  border border-gray_900 rounded-md overflow-hidden bg-primary_white">
       <li

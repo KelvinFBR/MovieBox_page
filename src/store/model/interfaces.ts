@@ -26,3 +26,13 @@ export interface TitlesState {
   currentPageUrl: string
   results: Titles[]
 }
+
+export type SortType = 'ascendente' | 'descendente'
+
+export interface FilterState {
+  search: string,
+  sort: SortType | 'ordenar',
+  year?: number | string,
+  titleType: string
+  titleTypes: string[]
+}

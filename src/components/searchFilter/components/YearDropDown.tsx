@@ -2,11 +2,7 @@
 
 import { setYear } from "@/store/slices/filterSlice";
 import { useDispatch } from "react-redux";
-
-interface YearDropDownProps {
-  initYear: number
-  lastYear?: number
-}
+import { YearDropDownProps } from "../model/interfaces";
 
 export const YearDropDown = ({ initYear, lastYear = new Date().getFullYear() }: YearDropDownProps) => {
   const years = Array.from({ length: lastYear - initYear + 1 }, (_, index) => initYear + index);
