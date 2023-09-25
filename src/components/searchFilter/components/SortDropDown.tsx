@@ -10,10 +10,10 @@ export const SortDropDown = () => {
     <ul className="w-full max-h-40 scroolbar absolute left-0 top-12 z-10 flex flex-col gap-2  border border-gray_900 rounded-md overflow-hidden bg-primary_white">
       <li
         onClick={() => dispatch(setSort("ascendente"))}
-        className="py-2 px-3 cursor-pointer hover:bg-rose_700 hover:text-primary_white">ascendente</li>
+        className="py-2 px-3 cursor-pointer hover:bg-rose_700 hover:text-primary_white capitalize">ascendente</li>
       <li
         onClick={() => dispatch(setSort("descendente"))}
-        className="py-2 px-3 cursor-pointer hover:bg-rose_700 hover:text-primary_white">descendente</li>
+        className="py-2 px-3 cursor-pointer hover:bg-rose_700 hover:text-primary_white capitalize">descendente</li>
     </ul>
   )
 }
