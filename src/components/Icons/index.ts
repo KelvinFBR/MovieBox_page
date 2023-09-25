@@ -1,0 +1,16 @@
+export * from './IArrow';
+export * from './IArrowSort';
+export * from './ICategory';
+export * from './IFacebook';
+export { default as IImdb } from './IImdb';
+export * from './IInstagram';
+export * from './ILogo';
+export * from './INextPage';
+export * from './INextPageDisable';
+export * from './IPlay';
+export * from './IPrevPage';
+export * from './IPrevPageDisable';
+export * from './ISearch';
+export * from './ITwitter';
+export * from './IYoutube';
+export { default as ItomatoRate } from './ItomatoRate';
