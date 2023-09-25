@@ -1,17 +1,13 @@
 'use client'
 
 
-import { Titles } from "@/store/model/interfaces";
-import { CardTitle } from "..";
+import { CardTitle, Pagination } from "..";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
-interface TitlesProps {
-  isLoadingTitles: boolean,
-}
 
-export const TitlesContainer = ({ isLoadingTitles }: TitlesProps) => {
-  const { results: titles } = useSelector((state: RootState) => state.titles);
+export const TitlesContainer = () => {
+  const { results: titles, isLoadingTitles } = useSelector((state: RootState) => state.titles);
 
   if (isLoadingTitles) {
     return (
@@ -28,6 +24,8 @@ export const TitlesContainer = ({ isLoadingTitles }: TitlesProps) => {
           <CardTitle key={title._id} {...title} />
         ))}
       </div>
+
+      {titles.length > 0 ? (<Pagination />) : null}
     </section>
   )
 }

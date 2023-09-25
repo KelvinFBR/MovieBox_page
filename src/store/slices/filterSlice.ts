@@ -18,7 +18,7 @@ const initialState: FilterState = {
   search: '',
   year: 'Año',
   sort: 'ordenar',
-  titleType: 'movie',
+  titleType: 'Titulo',
   titleTypes: [],
 }
 

@@ -19,8 +19,10 @@ export interface Titles {
 }
 
 export interface TitlesState {
+  isLoadingTitles: boolean
   entries: number
-  next: number | null
-  page: number
+  next: string | null
+  page: number | string
+  currentPageUrl: string
   results: Titles[]
 }

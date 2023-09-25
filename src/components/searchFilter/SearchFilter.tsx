@@ -15,8 +15,6 @@ const movieService = new MovieService();
 
 type TypeDropDown = "category" | "year" | "Sort"
 
-
-
 const SearchFilter = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   const router = useRouter()
@@ -30,10 +28,13 @@ const SearchFilter = () => {
   const haddleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!searchRef.current?.value) return
-    const typeSort = sort === 'ascendente' ? 'incr' : 'decr'
+    const typeSortValid = sort !== 'ordenar'
+      ? sort === 'ascendente' ? 'incr' : 'decr'
+      : 'incr';
     const yearValid = year !== 'Año' ? year : ''
+    const titleTypeValid = titleType !== 'Titulo' ? titleType : ''
 
-    router.push(`/search?q=${searchRef.current.value}&sort=year.${typeSort}&titleType=${titleType}${yearValid ?`&year=${yearValid}` : ''}`)
+    router.push(`/search?q=${searchRef.current.value}${typeSortValid ? `&sort=year.${typeSortValid}` : ''}${titleTypeValid ? `&titleType=${titleTypeValid}` : ''}${yearValid ? `&year=${yearValid}` : ''}`)
   }
 
   const dropDownToggle = (type: TypeDropDown) => {

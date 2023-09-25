@@ -18,8 +18,6 @@ export const Slide = () => {
       spaceBetween={0}
       className='px-24'
       modules={[Pagination, A11y, Virtual, Autoplay]}
-      onSwiper={(swiper) => { }}
-      onSlideChange={() => { }}
       slidesPerView={1}
       autoplay={{
         delay: 3000,
@@ -34,7 +32,7 @@ export const Slide = () => {
       }}
       style={{
         height: '100vh',
-        maxHeight: '540px',
+        maxHeight: '640px',
         '--swiper-pagination-color': '#fff',
         '--swiper-pagination-bullet-size': '12px',
         '--swiper-pagination-bullet-inactive-color': '#ffffff38',

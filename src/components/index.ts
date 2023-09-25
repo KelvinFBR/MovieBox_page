@@ -4,6 +4,7 @@ export * from './header/Header';
 export * from './header/components/Slide';
 export * from './header/components/SlideItem';
 export * from './header/model';
+export { default as Pagination } from './pagination/Pagination';
 export { default as SearchFilter } from './searchFilter/SearchFilter';
 export * from './searchFilter/components/CategoryDropDown';
 export * from './searchFilter/components/SortDropDown';
