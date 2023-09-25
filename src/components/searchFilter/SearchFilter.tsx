@@ -7,59 +7,22 @@ import { SortDropDown } from "./components/SortDropDown"
 import { CategoryDropDown } from "./components/CategoryDropDown"
 import { MovieService } from '@/services';
 import { RootState } from '@/store';
-import { reset, setSearchValue, setTitleTypes, } from '@/store/slices/filterSlice';
+import { reset, setTitleTypes, } from '@/store/slices/filterSlice';
 import { IArrow, IArrowSort, ICategory, ISearch } from ".."
-import { useRouter } from 'next/navigation'
-import { TypeDropDown } from './model/interfaces';
+
+import { useDropDown } from './hooks/useDropDown';
+import { useForm } from './hooks/useForm';
 
 const movieService = new MovieService();
 
 
 const SearchFilter = () => {
-  const searchRef = useRef<HTMLInputElement>(null);
-  const router = useRouter()
-  const dispatch = useDispatch()
-  const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false)
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
-  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false)
   const [isloadingCategory, setIsloadingCategory] = useState<boolean>(true);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch()
+  const { haddleChange, haddleSubmit } = useForm(searchRef)
+  const { isCategoryDropdownOpen, isSortDropdownOpen, isYearDropdownOpen, dropDownToggle } = useDropDown()
   const { year, sort, titleType, titleTypes, search } = useSelector((state: RootState) => state.filter);
-
-  const haddleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!searchRef.current?.value) return
-    const typeSortValid = sort !== 'ordenar'
-      ? sort === 'ascendente' ? 'incr' : 'decr'
-      : 'decr';
-    const yearValid = year !== 'Año' ? year : ''
-    const titleTypeValid = titleType !== 'Titulo' ? titleType : ''
-
-    router.push(`/search?q=${searchRef.current.value}${typeSortValid ? `&sort=year.${typeSortValid}` : ''}${titleTypeValid ? `&titleType=${titleTypeValid}` : ''}${yearValid ? `&year=${yearValid}` : ''}`)
-  }
-
-  const dropDownToggle = (type: TypeDropDown) => {
-    if (type === "category") {
-      setIsCategoryDropdownOpen((state) => !state)
-      setIsSortDropdownOpen(false)
-      setIsYearDropdownOpen(false)
-      return
-    }
-    if (type === "Sort") {
-      setIsSortDropdownOpen((state) => !state)
-      setIsCategoryDropdownOpen(false)
-      setIsYearDropdownOpen(false)
-    }
-    if (type === "year") {
-      setIsYearDropdownOpen((state) => !state)
-      setIsSortDropdownOpen(false)
-      setIsCategoryDropdownOpen(false)
-    }
-  }
-
-  const haddleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    dispatch(setSearchValue(value))
-  }
 
   useEffect(() => {
     async function fetchTitleTypes() {
@@ -75,7 +38,6 @@ const SearchFilter = () => {
 
     fetchTitleTypes();
   }, [dispatch, titleTypes.length]);
-
 
   return (
     <section className="w-full px-7 flex justify-center items-center my-9">
