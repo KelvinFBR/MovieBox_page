@@ -1,3 +1,5 @@
+'use client'
+
 import { IFacebook, IInstagram, ITwitter, IYoutube } from "../Icons"
 
 export const Footer = () => {

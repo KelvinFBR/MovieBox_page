@@ -1,2 +1,12 @@
+export * from './Icons';
 export * from './footer/Footer';
 export * from './header/Header';
+export * from './header/components/Slide';
+export * from './header/components/SlideItem';
+export * from './header/model';
+export { default as SearchFilter } from './searchFilter/SearchFilter';
+export * from './searchFilter/components/CategoryDropDown';
+export * from './searchFilter/components/SortDropDown';
+export * from './searchFilter/components/YearDropDown';
+export * from './tittle/TitlesContainer';
+export * from './tittle/components/CardTitle';

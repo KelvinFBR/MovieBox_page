@@ -2,12 +2,8 @@ import Image from 'next/image';
 import { SlideContent } from '../model';
 import { IPlay, ItomatoRate, IImdb } from '@/components/Icons';
 
-interface SlideItemProps {
-  slideContent: SlideContent
-}
 
-export const SlideItem = ({ slideContent }: SlideItemProps) => {
-  const { name, description, rate, ratepercent } = slideContent
+export const SlideItem = ({ name, description, rate, ratepercent }: SlideContent) => {
 
   return (
     <div>

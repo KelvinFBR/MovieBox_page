@@ -1,5 +1,7 @@
 import { SlideContent } from "@/components/header/model";
 
+export const titleTypes = ['movie', 'musicVideo', 'podcastEpisode', 'podcastSeries', 'short', 'tvEpisode', 'tvMiniSeries', 'tvMovie', 'tvPilot', 'tvSeries', 'tvShort', 'tvSpecial', 'video', 'videoGame']
+
 export const slideItems: SlideContent[] = [
   {
     id: 1,
