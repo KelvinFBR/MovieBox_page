@@ -19,7 +19,7 @@ export const TitlesContainer = () => {
     <section className="my-20 w-full">
       {titles.length === 0 ? (<h2 className="text-center text-lg font-medium">Titles not exist</h2>) : null}
 
-      <div className="flex flex-wrap justify-center h-[840px] gap-x-16 gap-y-20 px-4">
+      <div className="flex flex-wrap justify-center gap-x-16 gap-y-20 px-4">
         {titles.map(title => (
           <CardTitle key={title._id} {...title} />
         ))}

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { SearchFilter, TitlesContainer } from "@/components";
 import { setCurrentPageUrl, setLoading, setTitles } from "@/store/slices/titlesSlice";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { MovieService } from "@/services";
 import { TitlesState } from "@/store/model/interfaces";
 
@@ -24,7 +24,7 @@ export default function Home() {
             dispatch(setCurrentPageUrl('/titles'))
           })
           .finally(() => dispatch(setLoading(false)))
-        
+
       } catch (error) {
         console.error('Error fetching titles:', error);
       }
